@@ -26,10 +26,10 @@ class UserTest {
     void CorrectPasswordTest() {
         // given
         User user = new User();
-        PasswordGenerator randomPasswordGenerator = new CorrectRandomPasswordGenerator();
+
 
         // when
-        user.initPassword(randomPasswordGenerator);
+        user.initPassword(() -> "aaaabbbb");
 
         // then
         assertThat(user.getPassword()).isNotNull();
@@ -40,10 +40,9 @@ class UserTest {
     void WrongPasswordTest() {
         // given
         User user = new User();
-        PasswordGenerator randomPasswordGenerator = new WrongRandomPasswordGenerator();
 
         // when
-        user.initPassword(randomPasswordGenerator);
+        user.initPassword(() -> "aa");
 
         // then
         assertThat(user.getPassword()).isNull();
