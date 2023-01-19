@@ -11,11 +11,9 @@ public class Courses {
 
     public double multipliedCreditAndCourseGrade() {
         // (학점수*교과목)의 합계
-        double multipliedCreditAndCourseGrade = 0;
-        for (Course course : courses) {
-            multipliedCreditAndCourseGrade += course.multiplyCreditAndCourseGrade();
-        }
-        return multipliedCreditAndCourseGrade;
+        return courses.stream()
+                .mapToDouble(Course :: multiplyCreditAndCourseGrade)
+                .sum();
     }
 
     public int calculateToTotalCompletedCredit() {
